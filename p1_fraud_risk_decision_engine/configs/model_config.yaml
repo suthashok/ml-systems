@@ -1,0 +1,11 @@
+model:
+  type: lightgbm
+  learning_rate: 0.05
+  num_leaves: 64
+
+validation:
+  split_type: temporal
+
+threshold:
+  review: 0.70
+  decline: 0.90
