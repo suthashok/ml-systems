@@ -1,37 +1,96 @@
-# Online Transaction Fraud Detection
+# Fraud Risk Decision Engine
 
-A machine learning project focused on solving the IEEE-CIS Fraud Detection problem.
+Fraud detection project using the IEEE-CIS dataset.
 
-## Overview
+The project focuses on:
+- temporal validation
+- leakage-safe feature engineering
+- historical and velocity features
+- threshold tuning
+- online scoring simulation
 
+The idea was to move beyond a standard Kaggle workflow and think through some of the problems that show up in real fraud systems.
 
-This project builds an offline fraud detection pipeline using the IEEE-CIS dataset.
-
-The current focus is:
-- understanding the dataset
-- building leakage-safe features
-- using time-aware validation
-- training a strong transaction-level fraud model
-- analyzing model score cutoffs
-
-The goal is to build the IEEE-CIS solution cleanly first.
-Production-specific extensions are kept separate.
 
 ## Dataset
 
-Dataset: IEEE-CIS Fraud Detection (Kaggle)  
-https://www.kaggle.com/competitions/ieee-fraud-detection/data
+Dataset used:
+- IEEE-CIS Fraud Detection
 
-Files used:
+Main files:
 - `train_transaction.csv`
 - `train_identity.csv`
-- `test_transaction.csv`
-- `test_identity.csv`
 
-High-level shape:
-- training set: ~590K transactions
-- test set: ~506K transactions
-- fraud rate in train: ~3.5%
+Both tables are joined using `TransactionID`.
+
+`TransactionDT` is treated as a relative timeline and is used for:
+- train-validation split
+- historical feature generation
+- velocity features
+
+Dataset:
+https://www.kaggle.com/competitions/ieee-fraud-detection
+
+
+## Repo Structure
+
+```text
+Fraud-Risk-Decision-Engine/
+│
+├── notebooks/
+│   ├── 01_data_join_and_split.ipynb
+│   ├── 02_baseline_model.ipynb
+│   ├── 03_feature_iteration.ipynb
+│   ├── 04_history_features.ipynb
+│   ├── 05_velocity_features.ipynb
+│   └── 06_online_scoring_simulation.ipynb
+│
+├── docs/
+│   ├── 1_problem_framing.md
+│   ├── 2_data_sources_and_structure.md
+│   ├── 3_exploratory_data_analysis.md
+│   ├── 4_feature_engineering.md
+│   ├── 5_data_leakage_prevention.md
+│   ├── 6_modeling_and_calibration.md
+│   ├── 7_threshold_optimization.md
+│   └── 8_from_ieee_cis_to_production.md
+│
+├── src/
+├── configs/
+├── images/
+├── requirements.txt
+└── README.md
+```
+
+
+
+## Project Flow
+
+```text
+Raw Transactions
+      ↓
+Feature Engineering
+      ↓
+Temporal Validation
+      ↓
+Model Training
+      ↓
+Calibration
+      ↓
+Threshold Tuning
+      ↓
+Online Scoring Simulation
+```
+
+## Installation
+
+```bash
+git clone https://github.com/suthashok/ml-systems.git
+
+cd Fraud-Risk-Decision-Engine
+
+pip install -r requirements.txt
+```
 
 ## Documentation
 
@@ -44,19 +103,17 @@ The docs follow the same order as the project flow:
 5. `docs/5_data_leakage_prevention.md`
 6. `docs/6_modelling_and_calibration.md`
 7. `docs/7_threshold_optimization.md`
+8. `docs/8_from_ieee_cis_to_production.md`
 
-A separate doc will cover what changes are needed to move from the IEEE-CIS setup to a production fraud system.
+## Tech Stack
 
-## Project Status
-
-🚧 In progress
-
-Current phase:
-- design docs completed
-- baseline implementation is the next step
-
-## Getting Started
-
-1. Download the IEEE-CIS dataset from Kaggle
-2. Place the files under `data/raw/`
-3. Start with the first data join and split step
+```python
+Python
+Pandas
+NumPy
+Scikit-learn
+LightGBM
+XGBoost
+Matplotlib
+Seaborn
+```
