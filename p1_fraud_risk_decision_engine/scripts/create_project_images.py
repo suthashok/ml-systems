@@ -6,10 +6,11 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, FancyArrowPatch, FancyBboxPatch
 
 
-OUT = Path("images")
+BASE_DIR = Path(__file__).resolve().parent.parent
+OUT = BASE_DIR / "images"
 OUT.mkdir(exist_ok=True)
 
-RESULTS = Path("results")
+RESULTS = BASE_DIR / "results"
 
 # ------------------------
 # 1. Temporal split
@@ -184,4 +185,3 @@ if __name__ == "__main__":
     decision_flow()
 
     print("Images created in /images")
-``
