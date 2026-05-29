@@ -12,6 +12,12 @@ The project focuses on:
 The idea was to move beyond a standard Kaggle workflow and think through some of the problems that show up in real fraud systems.
 
 
+## System Architecture
+
+Our fraud detection engine evaluates live transactions by fetching historical velocity features, scoring them through a machine learning model, and applying business thresholds:
+
+![Fraud Decision Flow](images/fraud_decision_flow.png)
+
 ## Dataset
 
 Dataset used:
