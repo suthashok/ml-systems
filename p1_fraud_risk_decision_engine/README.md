@@ -41,7 +41,7 @@ https://www.kaggle.com/competitions/ieee-fraud-detection
 ## Repo Structure
 
 ```text
-Fraud-Risk-Decision-Engine/
+p1_fraud_risk_decision_engine/
 │
 ├── notebooks/
 │   ├── 01_data_join_and_split.ipynb
@@ -61,9 +61,17 @@ Fraud-Risk-Decision-Engine/
 │   ├── 7_threshold_optimization.md
 │   └── 8_from_ieee_cis_to_production.md
 │
+├── scripts/
+│   └── create_project_images.py
+│
 ├── src/
+│   └── features/
+│       └── feature_utils.py
+│
 ├── configs/
 ├── images/
+├── results/
+├── main.py
 ├── requirements.txt
 └── README.md
 ```
@@ -93,7 +101,7 @@ Online Scoring Simulation
 ```bash
 git clone https://github.com/suthashok/ml-systems.git
 
-cd Fraud-Risk-Decision-Engine
+cd ml-systems/p1_fraud_risk_decision_engine
 
 pip install -r requirements.txt
 ```
